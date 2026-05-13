@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>House Price Prediction</title>
+
+    <style>
+
+        body{
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.6),
+                    rgba(0,0,0,0.6)
+                ),
+
+                url('https://images.unsplash.com/photo-1568605114967-8130f3a36994');
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            margin:0;
+
+            padding:0;
+
+            color:white;
+        }
+
+        .navbar{
+
+            background:#0d47a1;
+
+            padding:20px;
+
+            font-size:32px;
+
+            font-weight:bold;
+
+            letter-spacing:1px;
+
+            overflow:hidden;
+        }
+
+        .navbar span{
+
+            margin-left:20px;
+        }
+
+        .logout-btn{
+
+            float:right;
+
+            color:white;
+
+            text-decoration:none;
+
+            background:red;
+
+            padding:10px 20px;
+
+            border-radius:10px;
+
+            font-size:18px;
+
+            margin-right:20px;
+
+            transition:0.3s;
+        }
+
+        .logout-btn:hover{
+
+            background:#ff5252;
+
+            transform:scale(1.05);
+        }
+
+        .container{
+
+            width:90%;
+
+            max-width:1200px;
+
+            margin:auto;
+
+            padding:20px;
+        }
+
+        .main-box{
+
+            background: rgba(255,255,255,0.1);
+
+            padding:30px;
+
+            border-radius:20px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:0px 0px 20px rgba(0,0,0,0.5);
+        }
+
+        h1, h2, h3{
+
+            text-align:center;
+        }
+
+        input, select{
+
+            width:100%;
+
+            padding:12px;
+
+            margin-top:10px;
+
+            margin-bottom:20px;
+
+            border:none;
+
+            border-radius:10px;
+
+            font-size:16px;
+        }
+
+        .btn-section{
+
+            text-align:center;
+
+            margin-top:20px;
+        }
+
+        button{
+
+            background:#00c853;
+
+            color:white;
+
+            padding:12px 25px;
+
+            border:none;
+
+            border-radius:10px;
+
+            font-size:18px;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        button:hover{
+
+            background:#00e676;
+
+            transform:scale(1.05);
+        }
+
+        .pdf-btn{
+
+            background:#ff9800;
+
+            margin-left:15px;
+        }
+
+        .pdf-btn:hover{
+
+            background:#ffb74d;
+        }
+
+        .result-card{
+
+            margin-top:20px;
+
+            background:rgba(255,255,255,0.15);
+
+            padding:20px;
+
+            border-radius:15px;
+
+            text-align:center;
+        }
+
+        .summary-box{
+
+            margin-top:20px;
+
+            background:rgba(255,255,255,0.1);
+
+            padding:20px;
+
+            border-radius:15px;
+        }
+
+        .progress-bar{
+
+            width:100%;
+
+            background:#ddd;
+
+            border-radius:20px;
+
+            overflow:hidden;
+
+            margin-top:15px;
+        }
+
+        .progress-fill{
+
+            width:91%;
+
+            background:green;
+
+            color:white;
+
+            padding:10px;
+
+            text-align:center;
+
+            font-weight:bold;
+        }
+
+        .graph{
+
+            margin-top:30px;
+
+            background:white;
+
+            padding:20px;
+
+            border-radius:15px;
+        }
+
+        .graph h2{
+
+            color:black;
+        }
+
+        .graph img{
+
+            width:100%;
+
+            border-radius:10px;
+        }
+
+        .about-section{
+
+            margin-top:30px;
+
+            padding:25px;
+
+            background:rgba(255,255,255,0.1);
+
+            border-radius:15px;
+
+            text-align:center;
+
+            line-height:1.8;
+        }
+
+        footer{
+
+            background:#0d47a1;
+
+            color:white;
+
+            text-align:center;
+
+            padding:15px;
+
+            margin-top:30px;
+
+            font-size:18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <span>
+        🏠 House Price Prediction System
+    </span>
+
+    <a
+        href="/login"
+        class="logout-btn"
+    >
+        Logout
+    </a>
+
+</div>
+
+<div class="container">
+
+<div class="main-box">
+
+    <h1>Bangalore House Price Prediction</h1>
+
+    <form method="POST">
+
+        <label>Location</label>
+
+        <select name="location">
+
+            {% for loc in locations %}
+
+            <option value="{{ loc }}">
+
+                {{ loc }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <label>Total Square Feet</label>
+
+        <input
+            type="number"
+            name="total_sqft"
+            required
+        >
+
+        <label>Bathrooms</label>
+
+        <input
+            type="number"
+            name="bath"
+            required
+        >
+
+        <label>BHK</label>
+
+        <input
+            type="number"
+            name="bhk"
+            required
+        >
+
+        <div class="btn-section">
+
+            <button type="submit">
+
+                Predict Price
+
+            </button>
+
+            <a href="/download">
+
+                <button
+                    type="button"
+                    class="pdf-btn"
+                >
+
+                    Download PDF
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result-card">
+
+        <h2>
+
+            Predicted Price:
+            ₹ {{ prediction }} Lakhs
+
+        </h2>
+
+        <div class="summary-box">
+
+            <h3>Prediction Details</h3>
+
+            <p>
+                <b>Location:</b> {{ location }}
+            </p>
+
+            <p>
+                <b>Total Sqft:</b> {{ sqft }}
+            </p>
+
+            <p>
+                <b>Bathrooms:</b> {{ bath }}
+            </p>
+
+            <p>
+                <b>BHK:</b> {{ bhk }}
+            </p>
+
+        </div>
+
+        <h3>Model Accuracy</h3>
+
+        <div class="progress-bar">
+
+            <div class="progress-fill">
+
+                91.32%
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="graph">
+
+        <h2>House Price vs Total Sqft</h2>
+
+        <img
+            src="/static/house_price_graph.png"
+            alt="House Graph"
+        >
+
+    </div>
+
+    <div class="graph">
+
+        <h2>Price Distribution Graph</h2>
+
+        <img
+            src="/static/price_distribution_graph.png"
+            alt="Distribution Graph"
+        >
+
+    </div>
+
+    <div class="about-section">
+
+        <h2>About Project</h2>
+
+        <p>
+
+            This project predicts Bangalore house prices
+            using Machine Learning algorithms.
+
+            Technologies used include Python,
+            Flask, Pandas, Scikit-learn,
+            Matplotlib and Data Analytics.
+
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+
+    Developed using Python, Flask & Machine Learning
+
+</footer>
+
+</body>
+
+</html>

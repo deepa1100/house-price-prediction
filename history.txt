@@ -1,0 +1,7 @@
+Location: AECS Layout, Sqft: 600.0, Bath: 1.0, BHK: 1.0, Predicted Price: 30.81957781083143
+Location:  Devarachikkanahalli, Sqft: 600.0, Bath: 1.0, BHK: 1.0, Predicted Price: 30.81957781083143
+Location: AECS Layout, Sqft: 1200.0, Bath: 2.0, BHK: 2.0, Predicted Price: 58.544233333333324
+Location:  Devarachikkanahalli, Sqft: 600.0, Bath: 1.0, BHK: 1.0, Predicted Price: 30.81957781083143Lakhs
+Location:  Devarachikkanahalli, Sqft: 600.0, Bath: 1.0, BHK: 1.0, Predicted Price: 30.81957781083143Lakhs
+Location:  Devarachikkanahalli, Sqft: 1200.0, Bath: 2.0, BHK: 2.0, Predicted Price: 73.23623333333333Lakhs
+Location: 5th Phase JP Nagar, Sqft: 3000.0, Bath: 3.0, BHK: 7.0, Predicted Price: 172.32333333333335Lakhs
